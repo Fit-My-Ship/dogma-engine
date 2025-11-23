@@ -1,7 +1,7 @@
 module.exports = {
 	types: [
 		{
-			value: 'feat2',
+			value: 'feat',
 			name: 'feat:     A new feature',
 		},
 		{

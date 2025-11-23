@@ -1,6 +1,4 @@
 #!/bin/bash
-git add .
-
 npm run format
 
 npm run lint:fix
