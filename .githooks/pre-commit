@@ -1,0 +1,14 @@
+#!/bin/bash
+git add .
+
+npm run format
+
+npm run lint:fix
+
+if ! npm run lint; then
+    echo "❌ ESLint errors found. Commit aborted."
+    exit 1
+fi
+
+echo "✅ All checks passed!"
+exit 0

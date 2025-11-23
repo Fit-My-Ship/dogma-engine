@@ -1,0 +1,8 @@
+#!/bin/sh
+# Пропускаем если коммит создается через Commitizen
+if [ -n "$CZ_TYPE" ]; then
+    exit 0
+fi
+
+# Или предлагаем использовать Commitizen
+echo "Consider using 'npm run commit' for better commit messages"

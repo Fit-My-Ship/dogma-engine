@@ -1,0 +1,53 @@
+{
+	"name": "dogma-engine",
+	"version": "0.0.1",
+	"description": "Dogma engine for calculations Eve online ship fitting",
+	"license": "MIT",
+	"author": "Th0r <th0r@inbox.ru>",
+	"type": "module",
+	"main": "src/index.js",
+	"scripts": {
+		"commit": "cz",
+		"format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\"",
+		"lint": "eslint src/**/*.ts",
+		"lint:fix": "eslint src/**/*.ts --fix",
+		"lint:watch": "eslint src/**/*.ts --watch",
+		"lint:strict": "eslint src/**/*.ts --max-warnings=0",
+		"lint:report": "eslint src/**/*.ts -f json -o eslint-report.json",
+		"lint:all": "eslint . --ext .ts,.tsx,.js,.jsx",
+		"postinstall": "git config core.hooksPath .githooks",
+		"prebuild": "npm run lint",
+		"prepublishOnly": "npm run lint && npm run test",
+		"validate": "npm run lint && npm run test && npm run build",
+		"ci:lint": "eslint src/**/*.ts --quiet --color",
+		"test": "vitest",
+		"test:watch": "vitest --watch",
+		"test:ui": "vitest --ui",
+		"test:run": "vitest run",
+		"coverage": "vitest run --coverage"
+	},
+	"devDependencies": {
+		"@types/node": "^24.10.1",
+		"@typescript-eslint/eslint-plugin": "^8.47.0",
+		"@typescript-eslint/parser": "^8.47.0",
+		"@vitest/coverage-v8": "^4.0.13",
+		"commitizen": "^4.3.1",
+		"cz-conventional-changelog": "^3.3.0",
+		"cz-customizable": "^7.5.1",
+		"eslint": "^9.39.1",
+		"eslint-config-prettier": "^10.1.8",
+		"nodemon": "^3.1.11",
+		"prettier": "^3.6.2",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.13"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-customizable"
+		},
+		"cz-customizable": {
+			"config": ".cz-config.cjs"
+		}
+	}
+}
