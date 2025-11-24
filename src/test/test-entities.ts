@@ -1,0 +1,126 @@
+import { Database } from '../db/database';
+import { InvType } from '../types/inv-type';
+import { Ship } from '../types/ship';
+
+// Test ship - Praxis id 47466
+const testShipAttribs: Record<number, number> = {
+	3: 0,
+	9: 7150,
+	11: 15000,
+	12: 7,
+	13: 7,
+	14: 7,
+	15: 0,
+	19: 1,
+	21: 0,
+	37: 75,
+	48: 600,
+	49: 0,
+	55: 1260000,
+	70: 0.1,
+	76: 70000,
+	79: 7500,
+	101: 6,
+	102: 6,
+	109: 0.67,
+	110: 0.67,
+	111: 0.67,
+	113: 0.67,
+	124: 16777215,
+	129: 1000,
+	136: 1,
+	153: 1.38e-7,
+	182: 3327,
+	192: 7,
+	208: 0,
+	209: 0,
+	210: 0,
+	211: 20,
+	217: 394,
+	246: 394,
+	263: 7150,
+	265: 7150,
+	267: 0.675,
+	268: 0.675,
+	269: 0.675,
+	270: 0.675,
+	271: 0.725,
+	272: 0.725,
+	273: 0.725,
+	274: 0.725,
+	277: 1,
+	283: 225,
+	422: 1,
+	479: 3332500,
+	482: 6450,
+	484: 0.75,
+	524: 0.75,
+	525: 1,
+	552: 465,
+	564: 169,
+	600: 3,
+	633: 4,
+	661: 1000,
+	662: 0.5,
+	793: 25,
+	1132: 400,
+	1137: 3,
+	1154: 3,
+	1178: 100,
+	1179: 0.01,
+	1196: 0.01,
+	1198: 0.01,
+	1199: 100,
+	1200: 100,
+	1224: 0.5,
+	1259: 0.79,
+	1261: 0.76,
+	1262: 0.79,
+	1271: 100,
+	1281: 1,
+	1547: 3,
+	1555: 500,
+	1688: 37.5,
+	1768: 11313,
+	1831: 50,
+	2045: 1,
+	2113: 1,
+	3020: 1,
+	4: 8.7e7,
+	38: 1200,
+	161: 500000,
+	162: 400,
+};
+const testShipEffects: number[] = [5014, 5030, 5035, 5229, 7055];
+
+export const testShip: Ship = {
+	typeID: 47466,
+	name: 'Test ship',
+	fittedModules: [],
+};
+
+export class TestDatabase implements Database {
+	getInvType(typeID: number): InvType {
+		if (typeID === 47466) {
+			const result: InvType = {
+				typeID: 47466,
+				attributes: Object.entries(testShipAttribs).map(
+					([key, value]) => ({
+						attributeID: +key,
+						value,
+					})
+				),
+				effects: testShipEffects.map(el => ({ effectID: el })),
+			};
+			return result;
+		} else {
+			return {
+				typeID: 0,
+				attributes: [],
+				effects: [],
+			};
+		}
+	}
+}
+
+export const testDb = new TestDatabase();

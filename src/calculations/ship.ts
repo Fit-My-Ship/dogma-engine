@@ -1,24 +1,57 @@
 import { getInvType } from '../db/inv-types';
+import { testDb } from '../test/test-entities';
 import { Ship } from '../types/ship';
 import { ShipStats } from '../types/stats';
+import { getAttribute } from './tools';
+
+const HULL_HP_ATTRIBUTE_ID = 9;
+const HULL_KI_RESIST_ATTRIBUTE_ID = 109;
+const HULL_TH_RESIST_ATTRIBUTE_ID = 110;
+const HULL_EX_RESIST_ATTRIBUTE_ID = 111;
+const HULL_EM_RESIST_ATTRIBUTE_ID = 113;
+const ARMOR_HP_ATTRIBUTE_ID = 265;
+const ARMOR_EM_RESIST_ATTRIBUTE_ID = 267;
+const ARMOR_EX_RESIST_ATTRIBUTE_ID = 268;
+const ARMOR_KI_RESIST_ATTRIBUTE_ID = 269;
+const ARMOR_TH_RESIST_ATTRIBUTE_ID = 270;
+const SHIELD_HP_ATTRIBUTE_ID = 263;
+const SHIELD_EM_RESIST_ATTRIBUTE_ID = 271;
+const SHIELD_EX_RESIST_ATTRIBUTE_ID = 272;
+const SHIELD_KI_RESIST_ATTRIBUTE_ID = 273;
+const SHIELD_TH_RESIST_ATTRIBUTE_ID = 274;
+const SHIELD_RECHARGE_RATE = 479;
 
 export function calculateShip(ship: Ship): ShipStats {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const rawType = getInvType(ship.typeID);
+	const shipInvType = getInvType(ship.typeID, testDb);
 	const result: ShipStats = {
 		typeID: ship.typeID,
 		hull: {
-			hp: 550,
-			resists: { em: 0.67, ex: 0.67, ki: 0.67, th: 0.67 },
+			hp: getAttribute(shipInvType, HULL_HP_ATTRIBUTE_ID),
+			resists: {
+				em: getAttribute(shipInvType, HULL_EM_RESIST_ATTRIBUTE_ID),
+				ex: getAttribute(shipInvType, HULL_EX_RESIST_ATTRIBUTE_ID),
+				ki: getAttribute(shipInvType, HULL_KI_RESIST_ATTRIBUTE_ID),
+				th: getAttribute(shipInvType, HULL_TH_RESIST_ATTRIBUTE_ID),
+			},
 		},
 		armor: {
-			hp: 0,
-			resists: { em: 0, ex: 0, ki: 0, th: 0 },
+			hp: getAttribute(shipInvType, ARMOR_HP_ATTRIBUTE_ID),
+			resists: {
+				em: getAttribute(shipInvType, ARMOR_EM_RESIST_ATTRIBUTE_ID),
+				ex: getAttribute(shipInvType, ARMOR_EX_RESIST_ATTRIBUTE_ID),
+				ki: getAttribute(shipInvType, ARMOR_KI_RESIST_ATTRIBUTE_ID),
+				th: getAttribute(shipInvType, ARMOR_TH_RESIST_ATTRIBUTE_ID),
+			},
 		},
 		shield: {
-			hp: 0,
-			resists: { em: 0, ex: 0, ki: 0, th: 0 },
-			rechargeRate: 100,
+			hp: getAttribute(shipInvType, SHIELD_HP_ATTRIBUTE_ID),
+			resists: {
+				em: getAttribute(shipInvType, SHIELD_EM_RESIST_ATTRIBUTE_ID),
+				ex: getAttribute(shipInvType, SHIELD_EX_RESIST_ATTRIBUTE_ID),
+				ki: getAttribute(shipInvType, SHIELD_KI_RESIST_ATTRIBUTE_ID),
+				th: getAttribute(shipInvType, SHIELD_TH_RESIST_ATTRIBUTE_ID),
+			},
+			rechargeRate: getAttribute(shipInvType, SHIELD_RECHARGE_RATE),
 		},
 	};
 	return result;
