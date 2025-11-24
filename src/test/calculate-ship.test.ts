@@ -30,4 +30,11 @@ describe('TestShip must have matched raw attributes', () => {
 		expect(resistToPercent(shipStats.shield.resists.th)).toBeCloseTo(27.5);
 		expect(shipStats.shield.rechargeRate).toBeCloseTo(3332500);
 	});
+
+	it('Powergrid must be 15000, CPU mustbe 600, PG and CPU loads must be 0', () => {
+		expect(shipStats.powerOutput).toBeCloseTo(15000);
+		expect(shipStats.powerLoad).toBeCloseTo(0);
+		expect(shipStats.cpuOutput).toBeCloseTo(600);
+		expect(shipStats.cpuLoad).toBeCloseTo(0);
+	});
 });

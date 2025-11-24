@@ -14,4 +14,8 @@ export interface ShipStats {
 	hull: TankLayer;
 	armor: TankLayer;
 	shield: RechargableTankLayer;
+	powerOutput: number;
+	powerLoad: number;
+	cpuOutput: number;
+	cpuLoad: number;
 }

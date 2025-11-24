@@ -19,7 +19,11 @@ const SHIELD_EM_RESIST_ATTRIBUTE_ID = 271;
 const SHIELD_EX_RESIST_ATTRIBUTE_ID = 272;
 const SHIELD_KI_RESIST_ATTRIBUTE_ID = 273;
 const SHIELD_TH_RESIST_ATTRIBUTE_ID = 274;
-const SHIELD_RECHARGE_RATE = 479;
+const SHIELD_RECHARGE_RATE_ATTRIBUTE_ID = 479;
+const POWER_OUTPUT_ATTRIBUTE_ID = 11;
+const POWER_LOAD_ATTRIBUTE_ID = 15;
+const CPU_OUTPUT_ATTRIBUTE_ID = 48;
+const CPU_LOAD_ATTRIBUTE_ID = 49;
 
 export function calculateShip(ship: Ship): ShipStats {
 	const shipInvType = getInvType(ship.typeID, testDb);
@@ -51,8 +55,15 @@ export function calculateShip(ship: Ship): ShipStats {
 				ki: getAttribute(shipInvType, SHIELD_KI_RESIST_ATTRIBUTE_ID),
 				th: getAttribute(shipInvType, SHIELD_TH_RESIST_ATTRIBUTE_ID),
 			},
-			rechargeRate: getAttribute(shipInvType, SHIELD_RECHARGE_RATE),
+			rechargeRate: getAttribute(
+				shipInvType,
+				SHIELD_RECHARGE_RATE_ATTRIBUTE_ID
+			),
 		},
+		powerOutput: getAttribute(shipInvType, POWER_OUTPUT_ATTRIBUTE_ID),
+		powerLoad: getAttribute(shipInvType, POWER_LOAD_ATTRIBUTE_ID),
+		cpuOutput: getAttribute(shipInvType, CPU_OUTPUT_ATTRIBUTE_ID),
+		cpuLoad: getAttribute(shipInvType, CPU_LOAD_ATTRIBUTE_ID),
 	};
 	return result;
 }
