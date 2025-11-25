@@ -11,11 +11,41 @@ export interface RechargableTankLayer extends TankLayer {
 
 export interface ShipStats {
 	typeID: number;
+	// tank
 	hull: TankLayer;
 	armor: TankLayer;
 	shield: RechargableTankLayer;
+	// fit
 	powerOutput: number;
 	powerLoad: number;
 	cpuOutput: number;
 	cpuLoad: number;
+	calibrationOutput: number;
+	calibrationLoad: number;
+	capacitorCapacity: number;
+	capacitorRechageRate: number;
+	cargoCapacity: number;
+	// slots
+	hiSlots: number;
+	medSlots: number;
+	lowStots: number;
+	turretSlots: number;
+	launcherSlots: number;
+	rigSlots: number;
+	// navigation
+	maxVelocity: number;
+	inertiaModifier: number;
+	mass: number;
+	warpSpeed: number;
+
+	// drones
+	droneCapacity: number;
+	droneBandwidth: number;
+
+	// targeting
+	maxTargetRange: number;
+	maxLockedTargets: number;
+	sensorStregth: number;
+	signatureRadius: number;
+	scanResolution: number;
 }

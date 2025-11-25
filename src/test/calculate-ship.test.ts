@@ -31,10 +31,18 @@ describe('TestShip must have matched raw attributes', () => {
 		expect(shipStats.shield.rechargeRate).toBeCloseTo(3332500);
 	});
 
-	it('Powergrid must be 15000, CPU mustbe 600, PG and CPU loads must be 0', () => {
+	it('Powergrid must be 15000, CPU mustbe 600, calibration must be 400, PG, CPU and calibration loads must be 0', () => {
 		expect(shipStats.powerOutput).toBeCloseTo(15000);
 		expect(shipStats.powerLoad).toBeCloseTo(0);
 		expect(shipStats.cpuOutput).toBeCloseTo(600);
 		expect(shipStats.cpuLoad).toBeCloseTo(0);
+		expect(shipStats.calibrationOutput).toBeCloseTo(400);
+		expect(shipStats.calibrationLoad).toBeCloseTo(0);
+	});
+
+	it('Capacitor capacity must be 6450, capacitor recharge rate must be xxx, cargo must be 1200', () => {
+		expect(shipStats.capacitorCapacity).toBeCloseTo(6450);
+		expect(shipStats.capacitorRechageRate).toBeCloseTo(1260000);
+		expect(shipStats.cargoCapacity).toBeCloseTo(1200);
 	});
 });
