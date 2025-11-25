@@ -1,5 +1,7 @@
 export type DamageType = 'em' | 'ex' | 'th' | 'ki';
 
+export type SensorType = 'radar' | 'ladar' | 'gravimetric' | 'magnetometric';
+
 export interface TankLayer {
 	hp: number;
 	resists: Record<DamageType, number>;
@@ -45,7 +47,8 @@ export interface ShipStats {
 	// targeting
 	maxTargetRange: number;
 	maxLockedTargets: number;
-	sensorStregth: number;
+	sensorStrength: number;
+	sensorType: SensorType;
 	signatureRadius: number;
 	scanResolution: number;
 }
