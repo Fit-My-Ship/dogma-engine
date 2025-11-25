@@ -1,6 +1,6 @@
 {
 	"name": "dogma-engine",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "Dogma engine for calculations Eve online ship fitting",
 	"license": "MIT",
 	"author": "Th0r <th0r@inbox.ru>",
