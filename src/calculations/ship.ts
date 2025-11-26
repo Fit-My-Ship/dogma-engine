@@ -1,8 +1,7 @@
-import { getInvType } from '../db/inv-types';
+import { InvType } from '../models/inv-type';
 import { testDb } from '../test/test-entities';
 import { Ship } from '../types/ship';
 import { SensorType, ShipStats } from '../types/stats';
-import { getAttribute } from './tools';
 
 const HULL_HP_ATTRIBUTE_ID = 9;
 const HULL_KI_RESIST_ATTRIBUTE_ID = 109;
@@ -51,23 +50,19 @@ const SIGNATURE_RADIUS_ATTRIBUTE_ID = 552;
 const SCAN_RESOLUTION_ATTRIBUTE_ID = 564;
 
 export function calculateShip(ship: Ship): ShipStats {
-	const shipInvType = getInvType(ship.typeID, testDb);
+	const shipInvType = new InvType(testDb.getInvType(ship.typeID));
 
-	let sensorStrength: number = getAttribute(
-		shipInvType,
+	let sensorStrength: number = shipInvType.getAttributeValue(
 		SCAN_RADAR_STREGTH_ATTRIBUTE_ID
 	);
 	let sensorType: SensorType = 'radar';
-	const ladarStrength = getAttribute(
-		shipInvType,
+	const ladarStrength = shipInvType.getAttributeValue(
 		SCAN_LADAR_STREGTH_ATTRIBUTE_ID
 	);
-	const gravimetricStrength = getAttribute(
-		shipInvType,
+	const gravimetricStrength = shipInvType.getAttributeValue(
 		SCAN_GRAVIMETRIC_STREGTH_ATTRIBUTE_ID
 	);
-	const magnetometricStrength = getAttribute(
-		shipInvType,
+	const magnetometricStrength = shipInvType.getAttributeValue(
 		SCAN_MAGNETOMETRIC_STREGTH_ATTRIBUTE_ID
 	);
 	if (ladarStrength > sensorStrength) {
@@ -86,95 +81,103 @@ export function calculateShip(ship: Ship): ShipStats {
 	const result: ShipStats = {
 		typeID: ship.typeID,
 		hull: {
-			hp: getAttribute(shipInvType, HULL_HP_ATTRIBUTE_ID),
+			hp: shipInvType.getAttributeValue(HULL_HP_ATTRIBUTE_ID),
 			resists: {
-				em: getAttribute(shipInvType, HULL_EM_RESIST_ATTRIBUTE_ID),
-				ex: getAttribute(shipInvType, HULL_EX_RESIST_ATTRIBUTE_ID),
-				ki: getAttribute(shipInvType, HULL_KI_RESIST_ATTRIBUTE_ID),
-				th: getAttribute(shipInvType, HULL_TH_RESIST_ATTRIBUTE_ID),
+				em: shipInvType.getAttributeValue(HULL_EM_RESIST_ATTRIBUTE_ID),
+				ex: shipInvType.getAttributeValue(HULL_EX_RESIST_ATTRIBUTE_ID),
+				ki: shipInvType.getAttributeValue(HULL_KI_RESIST_ATTRIBUTE_ID),
+				th: shipInvType.getAttributeValue(HULL_TH_RESIST_ATTRIBUTE_ID),
 			},
 		},
 		armor: {
-			hp: getAttribute(shipInvType, ARMOR_HP_ATTRIBUTE_ID),
+			hp: shipInvType.getAttributeValue(ARMOR_HP_ATTRIBUTE_ID),
 			resists: {
-				em: getAttribute(shipInvType, ARMOR_EM_RESIST_ATTRIBUTE_ID),
-				ex: getAttribute(shipInvType, ARMOR_EX_RESIST_ATTRIBUTE_ID),
-				ki: getAttribute(shipInvType, ARMOR_KI_RESIST_ATTRIBUTE_ID),
-				th: getAttribute(shipInvType, ARMOR_TH_RESIST_ATTRIBUTE_ID),
+				em: shipInvType.getAttributeValue(ARMOR_EM_RESIST_ATTRIBUTE_ID),
+				ex: shipInvType.getAttributeValue(ARMOR_EX_RESIST_ATTRIBUTE_ID),
+				ki: shipInvType.getAttributeValue(ARMOR_KI_RESIST_ATTRIBUTE_ID),
+				th: shipInvType.getAttributeValue(ARMOR_TH_RESIST_ATTRIBUTE_ID),
 			},
 		},
 		shield: {
-			hp: getAttribute(shipInvType, SHIELD_HP_ATTRIBUTE_ID),
+			hp: shipInvType.getAttributeValue(SHIELD_HP_ATTRIBUTE_ID),
 			resists: {
-				em: getAttribute(shipInvType, SHIELD_EM_RESIST_ATTRIBUTE_ID),
-				ex: getAttribute(shipInvType, SHIELD_EX_RESIST_ATTRIBUTE_ID),
-				ki: getAttribute(shipInvType, SHIELD_KI_RESIST_ATTRIBUTE_ID),
-				th: getAttribute(shipInvType, SHIELD_TH_RESIST_ATTRIBUTE_ID),
+				em: shipInvType.getAttributeValue(
+					SHIELD_EM_RESIST_ATTRIBUTE_ID
+				),
+				ex: shipInvType.getAttributeValue(
+					SHIELD_EX_RESIST_ATTRIBUTE_ID
+				),
+				ki: shipInvType.getAttributeValue(
+					SHIELD_KI_RESIST_ATTRIBUTE_ID
+				),
+				th: shipInvType.getAttributeValue(
+					SHIELD_TH_RESIST_ATTRIBUTE_ID
+				),
 			},
-			rechargeRate: getAttribute(
-				shipInvType,
+			rechargeRate: shipInvType.getAttributeValue(
 				SHIELD_RECHARGE_RATE_ATTRIBUTE_ID
 			),
 		},
 
-		powerOutput: getAttribute(shipInvType, POWER_OUTPUT_ATTRIBUTE_ID),
-		powerLoad: getAttribute(shipInvType, POWER_LOAD_ATTRIBUTE_ID),
-		cpuOutput: getAttribute(shipInvType, CPU_OUTPUT_ATTRIBUTE_ID),
-		cpuLoad: getAttribute(shipInvType, CPU_LOAD_ATTRIBUTE_ID),
-		calibrationOutput: getAttribute(
-			shipInvType,
+		powerOutput: shipInvType.getAttributeValue(POWER_OUTPUT_ATTRIBUTE_ID),
+		powerLoad: shipInvType.getAttributeValue(POWER_LOAD_ATTRIBUTE_ID),
+		cpuOutput: shipInvType.getAttributeValue(CPU_OUTPUT_ATTRIBUTE_ID),
+		cpuLoad: shipInvType.getAttributeValue(CPU_LOAD_ATTRIBUTE_ID),
+		calibrationOutput: shipInvType.getAttributeValue(
 			CALIBRATION_OUTPUT_ATTRIBUTE_ID
 		),
-		calibrationLoad: getAttribute(
-			shipInvType,
+		calibrationLoad: shipInvType.getAttributeValue(
 			CALIBRATION_LOAD_ATTRIBUTE_ID
 		),
-		capacitorCapacity: getAttribute(
-			shipInvType,
+		capacitorCapacity: shipInvType.getAttributeValue(
 			CAPACITOR_CAPACITY_ATTRIBUTE_ID
 		),
-		capacitorRechageRate: getAttribute(
-			shipInvType,
+		capacitorRechageRate: shipInvType.getAttributeValue(
 			CAPACITOR_RECHARGE_ATTRIBUTE_ID
 		),
-		cargoCapacity: getAttribute(shipInvType, CARGO_CAPACITY_ATTRIBUTE_ID),
+		cargoCapacity: shipInvType.getAttributeValue(
+			CARGO_CAPACITY_ATTRIBUTE_ID
+		),
 
-		hiSlots: getAttribute(shipInvType, HI_SLOTS_ATTRIBUTE_ID),
-		medSlots: getAttribute(shipInvType, MED_SLOTS_ATTRIBUTE_ID),
-		lowStots: getAttribute(shipInvType, LOW_SLOTS_ATTRIBUTE_ID),
-		turretSlots: getAttribute(shipInvType, TURRET_SLOTS_LEFT_ATTRIBUTE_ID),
-		launcherSlots: getAttribute(
-			shipInvType,
+		hiSlots: shipInvType.getAttributeValue(HI_SLOTS_ATTRIBUTE_ID),
+		medSlots: shipInvType.getAttributeValue(MED_SLOTS_ATTRIBUTE_ID),
+		lowStots: shipInvType.getAttributeValue(LOW_SLOTS_ATTRIBUTE_ID),
+		turretSlots: shipInvType.getAttributeValue(
+			TURRET_SLOTS_LEFT_ATTRIBUTE_ID
+		),
+		launcherSlots: shipInvType.getAttributeValue(
 			LAUNCHER_SLOTS_LEFT_ATTRIBUTE_ID
 		),
-		rigSlots: getAttribute(shipInvType, RIG_SLOTS_ATTRIBUTE_ID),
+		rigSlots: shipInvType.getAttributeValue(RIG_SLOTS_ATTRIBUTE_ID),
 
-		maxVelocity: getAttribute(shipInvType, MAX_VELOCITY_ATTRIBUTE_ID),
-		inertiaModifier: getAttribute(
-			shipInvType,
+		maxVelocity: shipInvType.getAttributeValue(MAX_VELOCITY_ATTRIBUTE_ID),
+		inertiaModifier: shipInvType.getAttributeValue(
 			INERTIA_MODIFIER_ATTRIBUTE_ID
 		),
-		mass: getAttribute(shipInvType, MASS_ATTRIBUTE_ID),
-		warpSpeed: getAttribute(shipInvType, WARP_SPEED_ATTRIBUTE_ID),
+		mass: shipInvType.getAttributeValue(MASS_ATTRIBUTE_ID),
+		warpSpeed: shipInvType.getAttributeValue(WARP_SPEED_ATTRIBUTE_ID),
 
-		droneCapacity: getAttribute(shipInvType, DRONE_CAPACITY_ATTRIBUTE_ID),
-		droneBandwidth: getAttribute(shipInvType, DRONE_BANDWIDTH_ATTRIBUTE_ID),
+		droneCapacity: shipInvType.getAttributeValue(
+			DRONE_CAPACITY_ATTRIBUTE_ID
+		),
+		droneBandwidth: shipInvType.getAttributeValue(
+			DRONE_BANDWIDTH_ATTRIBUTE_ID
+		),
 
-		maxTargetRange: getAttribute(
-			shipInvType,
+		maxTargetRange: shipInvType.getAttributeValue(
 			MAX_TARGET_RANGE_ATTRIBUTE_ID
 		),
-		maxLockedTargets: getAttribute(
-			shipInvType,
+		maxLockedTargets: shipInvType.getAttributeValue(
 			MAX_LOCKED_TARGETS_ATTRIBUTE_ID
 		),
 		sensorStrength,
 		sensorType,
-		signatureRadius: getAttribute(
-			shipInvType,
+		signatureRadius: shipInvType.getAttributeValue(
 			SIGNATURE_RADIUS_ATTRIBUTE_ID
 		),
-		scanResolution: getAttribute(shipInvType, SCAN_RESOLUTION_ATTRIBUTE_ID),
+		scanResolution: shipInvType.getAttributeValue(
+			SCAN_RESOLUTION_ATTRIBUTE_ID
+		),
 	};
 	return result;
 }
