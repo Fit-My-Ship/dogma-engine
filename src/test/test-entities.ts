@@ -1,5 +1,5 @@
 import { Database } from '../db/database';
-import { IInvType } from '../models/inv-type';
+import { IInvTypeData } from '../models/inv-type';
 import { Ship } from '../types/ship';
 
 // Test ship - Praxis id 47466
@@ -100,9 +100,9 @@ export const testShip: Ship = {
 };
 
 export class TestDatabase implements Database {
-	getInvType(typeID: number): IInvType {
+	getInvType(typeID: number): IInvTypeData {
 		if (typeID === 47466) {
-			const result: IInvType = {
+			const result: IInvTypeData = {
 				typeID: 47466,
 				attributes: Object.entries(testShipAttribs).map(
 					([key, value]) => ({

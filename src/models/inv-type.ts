@@ -1,4 +1,4 @@
-export interface IInvType {
+export interface IInvTypeData {
 	typeID: number;
 	attributes: TypeAttribute[];
 	effects: TypeEffect[];
@@ -18,7 +18,7 @@ export class InvType {
 	private attributes: TypeAttribute[];
 	private effects: TypeEffect[];
 
-	constructor(data: IInvType) {
+	constructor(data: IInvTypeData) {
 		this.typeID = data.typeID;
 		this.attributes = data.attributes;
 		this.effects = data.effects;
