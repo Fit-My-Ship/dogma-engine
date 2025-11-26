@@ -1,4 +1,4 @@
-export type DamageType = 'em' | 'ex' | 'th' | 'ki';
+export type DamageType = 'em' | 'explosive' | 'thermal' | 'kinetic';
 
 export type SensorType = 'radar' | 'ladar' | 'gravimetric' | 'magnetometric';
 

@@ -84,18 +84,30 @@ export function calculateShip(ship: Ship): ShipStats {
 			hp: shipInvType.getAttributeValue(HULL_HP_ATTRIBUTE_ID),
 			resists: {
 				em: shipInvType.getAttributeValue(HULL_EM_RESIST_ATTRIBUTE_ID),
-				ex: shipInvType.getAttributeValue(HULL_EX_RESIST_ATTRIBUTE_ID),
-				ki: shipInvType.getAttributeValue(HULL_KI_RESIST_ATTRIBUTE_ID),
-				th: shipInvType.getAttributeValue(HULL_TH_RESIST_ATTRIBUTE_ID),
+				explosive: shipInvType.getAttributeValue(
+					HULL_EX_RESIST_ATTRIBUTE_ID
+				),
+				kinetic: shipInvType.getAttributeValue(
+					HULL_KI_RESIST_ATTRIBUTE_ID
+				),
+				thermal: shipInvType.getAttributeValue(
+					HULL_TH_RESIST_ATTRIBUTE_ID
+				),
 			},
 		},
 		armor: {
 			hp: shipInvType.getAttributeValue(ARMOR_HP_ATTRIBUTE_ID),
 			resists: {
 				em: shipInvType.getAttributeValue(ARMOR_EM_RESIST_ATTRIBUTE_ID),
-				ex: shipInvType.getAttributeValue(ARMOR_EX_RESIST_ATTRIBUTE_ID),
-				ki: shipInvType.getAttributeValue(ARMOR_KI_RESIST_ATTRIBUTE_ID),
-				th: shipInvType.getAttributeValue(ARMOR_TH_RESIST_ATTRIBUTE_ID),
+				explosive: shipInvType.getAttributeValue(
+					ARMOR_EX_RESIST_ATTRIBUTE_ID
+				),
+				kinetic: shipInvType.getAttributeValue(
+					ARMOR_KI_RESIST_ATTRIBUTE_ID
+				),
+				thermal: shipInvType.getAttributeValue(
+					ARMOR_TH_RESIST_ATTRIBUTE_ID
+				),
 			},
 		},
 		shield: {
@@ -104,13 +116,13 @@ export function calculateShip(ship: Ship): ShipStats {
 				em: shipInvType.getAttributeValue(
 					SHIELD_EM_RESIST_ATTRIBUTE_ID
 				),
-				ex: shipInvType.getAttributeValue(
+				explosive: shipInvType.getAttributeValue(
 					SHIELD_EX_RESIST_ATTRIBUTE_ID
 				),
-				ki: shipInvType.getAttributeValue(
+				kinetic: shipInvType.getAttributeValue(
 					SHIELD_KI_RESIST_ATTRIBUTE_ID
 				),
-				th: shipInvType.getAttributeValue(
+				thermal: shipInvType.getAttributeValue(
 					SHIELD_TH_RESIST_ATTRIBUTE_ID
 				),
 			},
