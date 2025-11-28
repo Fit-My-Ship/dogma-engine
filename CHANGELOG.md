@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.0...v0.1.1) (2025-11-28)
+
+
+### Bug Fixes
+
+* **dogma:** add missing ship stats fields ([031853d](https://github.com/Fit-My-Ship/dogma-engine/commit/031853d7fc74523a19e818d1e086a05727264e3f))
+* **dogma:** add some classes, base implementations ([5b6708f](https://github.com/Fit-My-Ship/dogma-engine/commit/5b6708f4db1730837e676eef87be0f809effe69d))
+
 ## 0.1.0 (2025-11-25)
 
 
