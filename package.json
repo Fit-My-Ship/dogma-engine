@@ -20,8 +20,8 @@
 		"prepublishOnly": "npm run lint && npm run test",
 		"validate": "npm run lint && npm run test && npm run build",
 		"ci:lint": "eslint src/**/*.ts --quiet --color",
-		"test": "vitest",
-		"test:watch": "vitest --watch",
+		"test": "vitest run",
+		"test:watch": "vitest",
 		"test:ui": "vitest --ui",
 		"test:run": "vitest run",
 		"coverage": "vitest run --coverage"
