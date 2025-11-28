@@ -1,5 +1,4 @@
-import { Database } from '../db/database';
-import { IInvTypeData } from '../models/inv-type';
+import { InMemoryDatabase } from '../db/in-memory-database';
 import { Ship } from '../types/ship';
 
 // Test ship - Praxis id 47466
@@ -99,28 +98,13 @@ export const testShip: Ship = {
 	fittedModules: [],
 };
 
-export class TestDatabase implements Database {
-	getInvType(typeID: number): IInvTypeData {
-		if (typeID === 47466) {
-			const result: IInvTypeData = {
-				typeID: 47466,
-				attributes: Object.entries(testShipAttribs).map(
-					([key, value]) => ({
-						attributeID: +key,
-						value,
-					})
-				),
-				effects: testShipEffects.map(el => ({ effectID: el })),
-			};
-			return result;
-		} else {
-			return {
-				typeID: 0,
-				attributes: [],
-				effects: [],
-			};
-		}
-	}
-}
-
-export const testDb = new TestDatabase();
+export const testDb = new InMemoryDatabase();
+testDb.createShipData({
+	typeID: 47466,
+	name: 'Praxis',
+	attributes: Object.entries(testShipAttribs).map(([key, value]) => ({
+		attributeID: +key,
+		value,
+	})),
+	effects: testShipEffects.map(el => ({ effectID: el })),
+});

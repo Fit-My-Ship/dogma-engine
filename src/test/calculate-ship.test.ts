@@ -4,8 +4,8 @@ import { testShip } from './test-entities';
 import { resistToPercent } from '../calculations/tools';
 import { SensorType } from '../types/stats';
 
-describe('TestShip must have matched raw attributes', () => {
-	const shipStats = calculateShip(testShip);
+describe('TestShip must have matched raw attributes', async () => {
+	const shipStats = await calculateShip(testShip);
 
 	it('Hull hp must be 7150, hull resistances must be 33%', () => {
 		expect(shipStats.hull.hp).toBeCloseTo(7150);
@@ -46,7 +46,7 @@ describe('TestShip must have matched raw attributes', () => {
 		expect(shipStats.shield.rechargeRate).toBeCloseTo(3332500);
 	});
 
-	it('Powergrid must be 15000, CPU mustbe 600, calibration must be 400, PG, CPU and calibration loads must be 0', () => {
+	it('Powergrid = 15000, CPU = 600, calibration = 400, all loads =  0', () => {
 		expect(shipStats.powerOutput).toBeCloseTo(15000);
 		expect(shipStats.powerLoad).toBeCloseTo(0);
 		expect(shipStats.cpuOutput).toBeCloseTo(600);
@@ -55,7 +55,7 @@ describe('TestShip must have matched raw attributes', () => {
 		expect(shipStats.calibrationLoad).toBeCloseTo(0);
 	});
 
-	it('Capacitor capacity must be 6450, capacitor recharge rate must be xxx, cargo must be 1200', () => {
+	it('Capacitor capacity = 6450, capacitor recharge = 1260000, cargo = 1200', () => {
 		expect(shipStats.capacitorCapacity).toBeCloseTo(6450);
 		expect(shipStats.capacitorRechageRate).toBeCloseTo(1260000);
 		expect(shipStats.cargoCapacity).toBeCloseTo(1200);

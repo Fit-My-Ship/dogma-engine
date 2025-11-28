@@ -1,22 +1,8 @@
-export interface IInvTypeData {
-	typeID: number;
-	attributes: TypeAttribute[];
-	effects: TypeEffect[];
-}
-
-export interface TypeAttribute {
-	attributeID: number;
-	value: number;
-}
-
-export interface TypeEffect {
-	effectID: number;
-}
-
+import { IInvTypeData, ITypeAttributeData, ITypeEffectData } from '../db/types';
 export class InvType {
 	private typeID: number;
-	private attributes: TypeAttribute[];
-	private effects: TypeEffect[];
+	private attributes: ITypeAttributeData[]; // TODO: move to Type-attribute class
+	private effects: ITypeEffectData[]; // TODO: move to Type-effect class
 
 	constructor(data: IInvTypeData) {
 		this.typeID = data.typeID;

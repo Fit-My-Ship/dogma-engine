@@ -1,3 +1,4 @@
+import { IInvTypeData } from '../db/types';
 import { InvType } from '../models/inv-type';
 import { testDb } from '../test/test-entities';
 import { Ship } from '../types/ship';
@@ -49,8 +50,17 @@ const SCAN_GRAVIMETRIC_STREGTH_ATTRIBUTE_ID = 211;
 const SIGNATURE_RADIUS_ATTRIBUTE_ID = 552;
 const SCAN_RESOLUTION_ATTRIBUTE_ID = 564;
 
-export function calculateShip(ship: Ship): ShipStats {
-	const shipInvType = new InvType(testDb.getInvType(ship.typeID));
+const defaultInvTypeData: IInvTypeData = {
+	typeID: 0,
+	attributes: [],
+	effects: [],
+};
+
+export async function calculateShip(ship: Ship): Promise<ShipStats> {
+	const shipData: IInvTypeData =
+		(await testDb.getInvType(ship.typeID)) ?? defaultInvTypeData;
+
+	const shipInvType = new InvType(shipData as IInvTypeData);
 
 	let sensorStrength: number = shipInvType.getAttributeValue(
 		SCAN_RADAR_STREGTH_ATTRIBUTE_ID
