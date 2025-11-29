@@ -22,7 +22,7 @@ describe('TestShip must have matched raw attributes', async () => {
 		expect(resistToPercent(shipStats.armorThrResist)).toBeCloseTo(32.5);
 	});
 
-	it('Shiels hp must be 7150, shield resistances must be 27.5, recharge rate must be 3332500', () => {
+	it('Shield hp must be 7150, shield resistances must be 27.5, recharge rate must be 3332500', () => {
 		expect(shipStats.shieldHp).toBeCloseTo(7150);
 		expect(resistToPercent(shipStats.shieldEmResist)).toBeCloseTo(27.5);
 		expect(resistToPercent(shipStats.shieldExpResist)).toBeCloseTo(27.5);
