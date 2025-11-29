@@ -1,8 +1,9 @@
 import { InMemoryDatabase } from '../db/in-memory-database';
-import { Ship } from '../types/ship';
+import { ShipFactory } from '../factories/ship-factory';
+import { Ship } from '../models/ship';
 
-// Test ship - Praxis id 47466
-const testShipAttribs: Record<number, number> = {
+const TEST_SHIP_ID: number = 47466;
+const TEST_SHIP_ATTRIBS: Record<number, number> = {
 	3: 0,
 	9: 7150,
 	11: 15000,
@@ -90,21 +91,19 @@ const testShipAttribs: Record<number, number> = {
 	161: 500000,
 	162: 400,
 };
-const testShipEffects: number[] = [5014, 5030, 5035, 5229, 7055];
-
-export const testShip: Ship = {
-	typeID: 47466,
-	name: 'Test ship',
-	fittedModules: [],
-};
+const TEST_SHIP_EFFECTS: number[] = [5014, 5030, 5035, 5229, 7055];
 
 export const testDb = new InMemoryDatabase();
 testDb.createShipData({
-	typeID: 47466,
+	typeID: TEST_SHIP_ID,
 	name: 'Praxis',
-	attributes: Object.entries(testShipAttribs).map(([key, value]) => ({
+	attributes: Object.entries(TEST_SHIP_ATTRIBS).map(([key, value]) => ({
 		attributeID: +key,
 		value,
 	})),
-	effects: testShipEffects.map(el => ({ effectID: el })),
+	effects: TEST_SHIP_EFFECTS.map(el => ({ effectID: el })),
 });
+
+const shipFactory = new ShipFactory(testDb);
+export const testShip: Ship =
+	(await shipFactory.createFromTypeID(TEST_SHIP_ID))!;

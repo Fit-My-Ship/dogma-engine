@@ -28,7 +28,6 @@ type ShieldTankLayer = AddPrefix<TankLayer, 'shield'> & {
 export type SensorType = 'radar' | 'ladar' | 'gravimetric' | 'magnetometric';
 
 interface ShipStatsRest {
-	typeID: number;
 	// fit
 	powerOutput: number;
 	powerLoad: number;
