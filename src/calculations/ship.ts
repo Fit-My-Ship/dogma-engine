@@ -5,20 +5,20 @@ import { Ship } from '../types/ship';
 import { SensorType, ShipStats } from '../types/stats';
 
 const HULL_HP_ATTRIBUTE_ID = 9;
-const HULL_KI_RESIST_ATTRIBUTE_ID = 109;
-const HULL_TH_RESIST_ATTRIBUTE_ID = 110;
-const HULL_EX_RESIST_ATTRIBUTE_ID = 111;
+const HULL_KIN_RESIST_ATTRIBUTE_ID = 109;
+const HULL_THR_RESIST_ATTRIBUTE_ID = 110;
+const HULL_EXP_RESIST_ATTRIBUTE_ID = 111;
 const HULL_EM_RESIST_ATTRIBUTE_ID = 113;
 const ARMOR_HP_ATTRIBUTE_ID = 265;
 const ARMOR_EM_RESIST_ATTRIBUTE_ID = 267;
-const ARMOR_EX_RESIST_ATTRIBUTE_ID = 268;
-const ARMOR_KI_RESIST_ATTRIBUTE_ID = 269;
-const ARMOR_TH_RESIST_ATTRIBUTE_ID = 270;
+const ARMOR_EXP_RESIST_ATTRIBUTE_ID = 268;
+const ARMOR_KIN_RESIST_ATTRIBUTE_ID = 269;
+const ARMOR_THR_RESIST_ATTRIBUTE_ID = 270;
 const SHIELD_HP_ATTRIBUTE_ID = 263;
 const SHIELD_EM_RESIST_ATTRIBUTE_ID = 271;
-const SHIELD_EX_RESIST_ATTRIBUTE_ID = 272;
-const SHIELD_KI_RESIST_ATTRIBUTE_ID = 273;
-const SHIELD_TH_RESIST_ATTRIBUTE_ID = 274;
+const SHIELD_EXP_RESIST_ATTRIBUTE_ID = 272;
+const SHIELD_KIN_RESIST_ATTRIBUTE_ID = 273;
+const SHIELD_THR_RESIST_ATTRIBUTE_ID = 274;
 const SHIELD_RECHARGE_RATE_ATTRIBUTE_ID = 479;
 const POWER_OUTPUT_ATTRIBUTE_ID = 11;
 const POWER_LOAD_ATTRIBUTE_ID = 15;
@@ -90,56 +90,52 @@ export async function calculateShip(ship: Ship): Promise<ShipStats> {
 
 	const result: ShipStats = {
 		typeID: ship.typeID,
-		hull: {
-			hp: shipInvType.getAttributeValue(HULL_HP_ATTRIBUTE_ID),
-			resists: {
-				em: shipInvType.getAttributeValue(HULL_EM_RESIST_ATTRIBUTE_ID),
-				explosive: shipInvType.getAttributeValue(
-					HULL_EX_RESIST_ATTRIBUTE_ID
-				),
-				kinetic: shipInvType.getAttributeValue(
-					HULL_KI_RESIST_ATTRIBUTE_ID
-				),
-				thermal: shipInvType.getAttributeValue(
-					HULL_TH_RESIST_ATTRIBUTE_ID
-				),
-			},
-		},
-		armor: {
-			hp: shipInvType.getAttributeValue(ARMOR_HP_ATTRIBUTE_ID),
-			resists: {
-				em: shipInvType.getAttributeValue(ARMOR_EM_RESIST_ATTRIBUTE_ID),
-				explosive: shipInvType.getAttributeValue(
-					ARMOR_EX_RESIST_ATTRIBUTE_ID
-				),
-				kinetic: shipInvType.getAttributeValue(
-					ARMOR_KI_RESIST_ATTRIBUTE_ID
-				),
-				thermal: shipInvType.getAttributeValue(
-					ARMOR_TH_RESIST_ATTRIBUTE_ID
-				),
-			},
-		},
-		shield: {
-			hp: shipInvType.getAttributeValue(SHIELD_HP_ATTRIBUTE_ID),
-			resists: {
-				em: shipInvType.getAttributeValue(
-					SHIELD_EM_RESIST_ATTRIBUTE_ID
-				),
-				explosive: shipInvType.getAttributeValue(
-					SHIELD_EX_RESIST_ATTRIBUTE_ID
-				),
-				kinetic: shipInvType.getAttributeValue(
-					SHIELD_KI_RESIST_ATTRIBUTE_ID
-				),
-				thermal: shipInvType.getAttributeValue(
-					SHIELD_TH_RESIST_ATTRIBUTE_ID
-				),
-			},
-			rechargeRate: shipInvType.getAttributeValue(
-				SHIELD_RECHARGE_RATE_ATTRIBUTE_ID
-			),
-		},
+		hullHp: shipInvType.getAttributeValue(HULL_HP_ATTRIBUTE_ID),
+		hullEmResist: shipInvType.getAttributeValue(
+			HULL_EM_RESIST_ATTRIBUTE_ID
+		),
+		hullExpResist: shipInvType.getAttributeValue(
+			HULL_EXP_RESIST_ATTRIBUTE_ID
+		),
+		hullKinResist: shipInvType.getAttributeValue(
+			HULL_KIN_RESIST_ATTRIBUTE_ID
+		),
+		hullThrResist: shipInvType.getAttributeValue(
+			HULL_THR_RESIST_ATTRIBUTE_ID
+		),
+
+		armorHp: shipInvType.getAttributeValue(ARMOR_HP_ATTRIBUTE_ID),
+
+		armorEmResist: shipInvType.getAttributeValue(
+			ARMOR_EM_RESIST_ATTRIBUTE_ID
+		),
+		armorExpResist: shipInvType.getAttributeValue(
+			ARMOR_EXP_RESIST_ATTRIBUTE_ID
+		),
+		armorKinResist: shipInvType.getAttributeValue(
+			ARMOR_KIN_RESIST_ATTRIBUTE_ID
+		),
+		armorThrResist: shipInvType.getAttributeValue(
+			ARMOR_THR_RESIST_ATTRIBUTE_ID
+		),
+
+		shieldHp: shipInvType.getAttributeValue(SHIELD_HP_ATTRIBUTE_ID),
+
+		shieldEmResist: shipInvType.getAttributeValue(
+			SHIELD_EM_RESIST_ATTRIBUTE_ID
+		),
+		shieldExpResist: shipInvType.getAttributeValue(
+			SHIELD_EXP_RESIST_ATTRIBUTE_ID
+		),
+		shieldKinResist: shipInvType.getAttributeValue(
+			SHIELD_KIN_RESIST_ATTRIBUTE_ID
+		),
+		shieldThrResist: shipInvType.getAttributeValue(
+			SHIELD_THR_RESIST_ATTRIBUTE_ID
+		),
+		shieldRechargeRate: shipInvType.getAttributeValue(
+			SHIELD_RECHARGE_RATE_ATTRIBUTE_ID
+		),
 
 		powerOutput: shipInvType.getAttributeValue(POWER_OUTPUT_ATTRIBUTE_ID),
 		powerLoad: shipInvType.getAttributeValue(POWER_LOAD_ATTRIBUTE_ID),
@@ -163,7 +159,7 @@ export async function calculateShip(ship: Ship): Promise<ShipStats> {
 
 		hiSlots: shipInvType.getAttributeValue(HI_SLOTS_ATTRIBUTE_ID),
 		medSlots: shipInvType.getAttributeValue(MED_SLOTS_ATTRIBUTE_ID),
-		lowStots: shipInvType.getAttributeValue(LOW_SLOTS_ATTRIBUTE_ID),
+		lowSlots: shipInvType.getAttributeValue(LOW_SLOTS_ATTRIBUTE_ID),
 		turretSlots: shipInvType.getAttributeValue(
 			TURRET_SLOTS_LEFT_ATTRIBUTE_ID
 		),

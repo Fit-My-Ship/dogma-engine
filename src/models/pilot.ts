@@ -1,7 +1,7 @@
 import { TypeAttribute } from '../types/attrib';
 import { TypeEffect } from '../types/effect';
 
-interface Skills {
+interface Skill {
 	typeID: number;
 	name: string;
 	attributes: TypeAttribute[];
@@ -9,7 +9,7 @@ interface Skills {
 }
 
 export class Pilot {
-	private skills: Skills[];
+	private skills: Skill[];
 
 	constructor() {
 		this.skills = [];
