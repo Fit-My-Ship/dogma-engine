@@ -1,4 +1,5 @@
 import { IInvTypeData, ITypeAttributeData, ITypeEffectData } from '../db/types';
+
 export class InvType {
 	private typeID: number;
 	private attributes: ITypeAttributeData[]; // TODO: move to Type-attribute class

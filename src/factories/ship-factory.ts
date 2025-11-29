@@ -7,9 +7,9 @@ export class ShipFactory {
 		this.db = db;
 	}
 
-	async createFromTypeID(typeID: number): Promise<Ship | undefined> {
+	async createFromTypeID(typeID: number): Promise<Ship | null> {
 		const data = await this.db.getShipData(typeID);
-		if (!data) return undefined;
+		if (!data) return null;
 
 		return new Ship(data);
 	}

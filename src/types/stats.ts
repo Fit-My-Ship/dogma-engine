@@ -1,22 +1,33 @@
 export type DamageType = 'em' | 'explosive' | 'thermal' | 'kinetic';
 
+type ShortPrefix = {
+	em: 'em';
+	explosive: 'exp';
+	thermal: 'thr';
+	kinetic: 'kin';
+}[DamageType];
+
+type Resistance = {
+	[K in DamageType as `${ShortPrefix}Resist`]: number;
+};
+
+type AddPrefix<T, Prefix extends string> = {
+	[K in keyof T as `${Prefix}${Capitalize<string & K>}`]: T[K];
+};
+
+type TankLayer = Resistance & {
+	hp: number;
+};
+
+type ArmorTankLayer = AddPrefix<TankLayer, 'armor'>;
+type HullTankLayer = AddPrefix<TankLayer, 'hull'>;
+type ShieldTankLayer = AddPrefix<TankLayer, 'shield'> & {
+	shieldRechargeRate: number;
+};
+
 export type SensorType = 'radar' | 'ladar' | 'gravimetric' | 'magnetometric';
 
-export interface TankLayer {
-	hp: number;
-	resists: Record<DamageType, number>;
-}
-
-export interface RechargableTankLayer extends TankLayer {
-	rechargeRate: number;
-}
-
-export interface ShipStats {
-	typeID: number;
-	// tank
-	hull: TankLayer;
-	armor: TankLayer;
-	shield: RechargableTankLayer;
+interface ShipStatsRest {
 	// fit
 	powerOutput: number;
 	powerLoad: number;
@@ -30,7 +41,7 @@ export interface ShipStats {
 	// slots
 	hiSlots: number;
 	medSlots: number;
-	lowStots: number;
+	lowSlots: number;
 	turretSlots: number;
 	launcherSlots: number;
 	rigSlots: number;
@@ -52,3 +63,8 @@ export interface ShipStats {
 	signatureRadius: number;
 	scanResolution: number;
 }
+
+export type ShipStats = HullTankLayer &
+	ArmorTankLayer &
+	ShieldTankLayer &
+	ShipStatsRest;

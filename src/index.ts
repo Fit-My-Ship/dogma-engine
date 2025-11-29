@@ -1,1 +1,1 @@
-export { calculateShip } from './calculations/ship';
+export { calculateShip } from './utils/ship';

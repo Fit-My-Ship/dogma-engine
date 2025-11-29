@@ -21,12 +21,6 @@ export class InMemoryDatabase implements Database {
 		const data = table.get(typeID);
 		if (!data) return null;
 
-		// Если данные уже содержат имя, возвращаем как IShipData
-		if ('name' in data && data.name) {
-			return data as IShipData;
-		}
-
-		// Если это IInvTypeData, добавляем имя по умолчанию
 		return {
 			...data,
 			name: `Ship ${typeID}`,
