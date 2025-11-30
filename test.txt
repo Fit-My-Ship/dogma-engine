@@ -1,1 +1,2 @@
 test release-please doubling msg
+fix - use squash-merge
