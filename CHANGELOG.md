@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.3](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.2...v0.1.3) (2025-11-30)
+
+
+### Bug Fixes
+
+* **common:** test release please ([#14](https://github.com/Fit-My-Ship/dogma-engine/issues/14)) ([00213bd](https://github.com/Fit-My-Ship/dogma-engine/commit/00213bd937d86c51d37c0515422d91eb4cbfd33d))
+* **config:** test release-please doubling ([4a60a0b](https://github.com/Fit-My-Ship/dogma-engine/commit/4a60a0bed8f0caced7fc97782926441d1a0f19bd))
+* **config:** test release-please doubling ([b40b547](https://github.com/Fit-My-Ship/dogma-engine/commit/b40b54739bf4b93beee281825fdf7000f3c2edf6))
+
+
+### Reverts
+
+* **common:** exclude invalid commits from release ([#18](https://github.com/Fit-My-Ship/dogma-engine/issues/18)) ([ac356ea](https://github.com/Fit-My-Ship/dogma-engine/commit/ac356ea67d57ecc08f0546b7e26c60f39de5eca4))
+* **common:** revert test commits (fix release please action) ([#16](https://github.com/Fit-My-Ship/dogma-engine/issues/16)) ([d352b23](https://github.com/Fit-My-Ship/dogma-engine/commit/d352b235f2d071195a106381bf557579f17f9b15))
+
 ## [0.1.2](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.1...v0.1.2) (2025-11-30)
 
 ### Bug Fixes
