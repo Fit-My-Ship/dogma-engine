@@ -64,7 +64,4 @@ interface ShipStatsRest {
 	scanResolution: number;
 }
 
-export type ShipStats = HullTankLayer &
-	ArmorTankLayer &
-	ShieldTankLayer &
-	ShipStatsRest;
+export type ShipStats = HullTankLayer & ArmorTankLayer & ShieldTankLayer & ShipStatsRest;
