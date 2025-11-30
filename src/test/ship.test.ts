@@ -1,7 +1,23 @@
 import { describe, it, expect } from 'vitest';
-import { testShip } from './test-entities';
+import { TEST_SHIP_DATA } from './test-entities';
 import { resistToPercent } from '../utils/utils';
 import { SensorType } from '../types/stats';
+import { container } from '../services/service-container';
+import { InMemoryDatabase } from '../db/in-memory-database';
+import { ShipFactory } from '../factories/ship-factory';
+import { Database } from '../db/types';
+import { Ship } from '../models/ship';
+
+container.register('database', new InMemoryDatabase());
+container.register('ship-factory', new ShipFactory());
+
+const testDb = container.resolve<Database>('database');
+testDb.createShipData(TEST_SHIP_DATA);
+
+const shipFactory = container.resolve<ShipFactory>('ship-factory');
+const testShip: Ship = (await shipFactory.createFromTypeID(
+	TEST_SHIP_DATA.typeID
+))!;
 
 describe('TestShip must have matched raw attributes', async () => {
 	const shipStats = await testShip.getShipStats();

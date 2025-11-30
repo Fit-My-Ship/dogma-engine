@@ -1,10 +1,11 @@
 import { Database } from '../db/types';
 import { Ship } from '../models/ship';
+import { container } from '../services/service-container';
 
 export class ShipFactory {
 	private db: Database;
-	constructor(db: Database) {
-		this.db = db;
+	constructor() {
+		this.db = container.resolve('database');
 	}
 
 	async createFromTypeID(typeID: number): Promise<Ship | null> {

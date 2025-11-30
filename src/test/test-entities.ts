@@ -1,6 +1,4 @@
-import { InMemoryDatabase } from '../db/in-memory-database';
-import { ShipFactory } from '../factories/ship-factory';
-import { Ship } from '../models/ship';
+import { IShipData } from '../db/types';
 
 const TEST_SHIP_ID: number = 47466;
 const TEST_SHIP_ATTRIBS: Record<number, number> = {
@@ -93,8 +91,7 @@ const TEST_SHIP_ATTRIBS: Record<number, number> = {
 };
 const TEST_SHIP_EFFECTS: number[] = [5014, 5030, 5035, 5229, 7055];
 
-export const testDb = new InMemoryDatabase();
-testDb.createShipData({
+export const TEST_SHIP_DATA: IShipData = {
 	typeID: TEST_SHIP_ID,
 	name: 'Praxis',
 	attributes: Object.entries(TEST_SHIP_ATTRIBS).map(([key, value]) => ({
@@ -102,8 +99,4 @@ testDb.createShipData({
 		value,
 	})),
 	effects: TEST_SHIP_EFFECTS.map(el => ({ effectID: el })),
-});
-
-const shipFactory = new ShipFactory(testDb);
-export const testShip: Ship =
-	(await shipFactory.createFromTypeID(TEST_SHIP_ID))!;
+};
