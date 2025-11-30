@@ -1,4 +1,4 @@
-import { IShipData } from '../db/types';
+import { IShipData, ISkillData } from '../db/types';
 
 const TEST_SHIP_ID: number = 47466;
 const TEST_SHIP_ATTRIBS: Record<number, number> = {
@@ -100,3 +100,13 @@ export const TEST_SHIP_DATA: IShipData = {
 	})),
 	effects: TEST_SHIP_EFFECTS.map(el => ({ effectID: el })),
 };
+
+export const TEST_SKILLS_DATA: ISkillData[] = [
+	{
+		typeID: 3392,
+		name: 'Mechanics',
+		level: 0,
+		attributes: [{ attributeID: 327, value: 5 }],
+		effects: [{ effectID: 132 }, { effectID: 251 }, { effectID: 392 }],
+	},
+];

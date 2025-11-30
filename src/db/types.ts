@@ -20,9 +20,21 @@ export interface IInvTypeData {
 	effects: ITypeEffectData[];
 }
 
+export interface ISkillData {
+	typeID: number;
+	name: string;
+	level: number;
+	attributes: ITypeAttributeData[];
+	effects: ITypeEffectData[];
+}
+
 export interface Database {
-	getInvType(typeID: number): Promise<IInvTypeData | null>;
-	getShipData(typeID: number): Promise<IShipData | null>;
 	createInvType(data: IInvTypeData): Promise<boolean>;
+	getInvType(typeID: number): Promise<IInvTypeData | null>;
+
 	createShipData(data: IShipData): Promise<boolean>;
+	getShipData(typeID: number): Promise<IShipData | null>;
+
+	createSkillsData(data: ISkillData[]): Promise<boolean>;
+	getSkillsData(): Promise<ISkillData[]>;
 }
