@@ -23,4 +23,8 @@ describe('Pilot must have skills', async () => {
 	it('Pilot must have non empty skills array', () => {
 		expect(pilot.getSkills().length).toBeGreaterThan(0);
 	});
+	it('Pilot must change skill levels', () => {
+		pilot.setAllSkillsLevel(5);
+		expect(pilot.getSkills().every(skill => skill.level === 5)).toBe(true);
+	});
 });
