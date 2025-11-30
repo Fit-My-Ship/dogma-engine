@@ -1,6 +1,4 @@
-import { IShipData } from '../db/types';
-import { TypeAttribute } from '../types/attrib';
-import { TypeEffect } from '../types/effect';
+import { IShipData, ITypeAttributeData, ITypeEffectData } from '../db/types';
 import { SensorType, ShipStats } from '../types/stats';
 import { Pilot } from './pilot';
 import { ShipModule } from './ship-module';
@@ -102,9 +100,9 @@ const SHIP_STATS_TEMPLATE: Omit<ShipStats, 'sensorType' | 'sensorStrength'> = {
 
 export class Ship {
 	private hullTypeID: number;
-	private hullAttributes: TypeAttribute[];
-	private hullEffects: TypeEffect[];
-	private baseAttributes: TypeAttribute[];
+	private hullAttributes: ITypeAttributeData[];
+	private hullEffects: ITypeEffectData[];
+	private baseAttributes: ITypeAttributeData[];
 	private modules: ShipModule[];
 	private pilot: Pilot;
 
