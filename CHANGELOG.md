@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.2...v0.2.0) (2025-11-30)
+
+
+### Features
+
+* **dogma:** add pilot class implemention ([#25](https://github.com/Fit-My-Ship/dogma-engine/issues/25)) ([7ebbd6b](https://github.com/Fit-My-Ship/dogma-engine/commit/7ebbd6bd895122df00ee46ae170e1ba94f7004bb))
+
 ## [0.1.2](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.1...v0.1.2) (2025-11-30)
 
 ### Bug Fixes
