@@ -2,6 +2,10 @@
 	"include-component-in-tag": false,
 	"bump-minor-pre-major": true,
 	"bump-patch-for-minor-pre-major": true,
+	"branches": ["main"],
+	"separate-pull-requests": true,
+	"always-link-local": true,
+	"filter-commits": "exclude-merge-commits",
 	"packages": {
 		".": {
 			"release-type": "node"

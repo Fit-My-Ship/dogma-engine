@@ -33,6 +33,7 @@ module.exports = {
 		{ name: 'database' },
 		{ name: 'tests' },
 		{ name: 'docs' },
+		{ name: 'common' },
 		{ name: 'config' },
 	],
 
