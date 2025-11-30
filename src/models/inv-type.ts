@@ -12,9 +12,7 @@ export class InvType {
 	}
 
 	getAttributeValue(attributeID: number): number {
-		const result = this.attributes.find(
-			attr => attr.attributeID === attributeID
-		);
+		const result = this.attributes.find(attr => attr.attributeID === attributeID);
 		return result?.value ?? 0;
 	}
 }

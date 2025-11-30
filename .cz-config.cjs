@@ -1,29 +1,14 @@
 module.exports = {
 	types: [
-		{
-			value: 'feat',
-			name: 'feat:     A new feature',
-		},
-		{
-			value: 'fix',
-			name: 'fix:      A bug fix',
-		},
+		{ value: 'feat', name: 'feat:     A new feature' },
+		{ value: 'fix', name: 'fix:      A bug fix' },
 		{ value: 'docs', name: 'docs:     Documentation change' },
-		{
-			value: 'style',
-			name: "style:    Don't affect code changes (formatting)",
-		},
+		{ value: 'style', name: "style:    Don't affect code changes (formatting)" },
 		{ value: 'refactor', name: 'refactor: Code refactoring' },
-		{
-			value: 'perf',
-			name: 'perf:     Performance fixes',
-		},
+		{ value: 'perf', name: 'perf:     Performance fixes' },
 		{ value: 'test', name: 'test:     Adding or change tests' },
 		{ value: 'ci', name: 'ci:       CI/CD changes' },
-		{
-			value: 'chore',
-			name: 'chore:    Additional tools (build, add libraries, etc)',
-		},
+		{ value: 'chore', name: 'chore:    Additional tools (build, add libraries, etc)' },
 		{ value: 'revert', name: 'revert:   Revert to a commit' },
 		{ value: 'WIP', name: 'WIP:      Work in progress' },
 	],
@@ -50,6 +35,5 @@ module.exports = {
 	allowCustomScopes: false,
 	allowBreakingChanges: ['feat', 'fix'],
 	skipEmptyScopes: true,
-
-	subjectLimit: 72,
+	subjectLimit: 100,
 };

@@ -15,9 +15,7 @@ const testDb = container.resolve<Database>('database');
 testDb.createShipData(TEST_SHIP_DATA);
 
 const shipFactory = container.resolve<ShipFactory>('ship-factory');
-const testShip: Ship = (await shipFactory.createFromTypeID(
-	TEST_SHIP_DATA.typeID
-))!;
+const testShip: Ship = (await shipFactory.createFromTypeID(TEST_SHIP_DATA.typeID))!;
 
 describe('TestShip must have matched raw attributes', async () => {
 	const shipStats = await testShip.getShipStats();

@@ -118,10 +118,7 @@ export class Ship {
 	}
 
 	getAttributeValue(attributeID: number): number {
-		return (
-			this.baseAttributes.find(e => e.attributeID === attributeID)
-				?.value ?? 0
-		);
+		return this.baseAttributes.find(e => e.attributeID === attributeID)?.value ?? 0;
 	}
 
 	getSensorTypeAndStrength(): {
@@ -159,14 +156,9 @@ export class Ship {
 		};
 	}
 
-	mapTemplateToValues(
-		template: typeof SHIP_STATS_TEMPLATE
-	): typeof SHIP_STATS_TEMPLATE {
+	mapTemplateToValues(template: typeof SHIP_STATS_TEMPLATE): typeof SHIP_STATS_TEMPLATE {
 		return Object.fromEntries(
-			Object.entries(template).map(([key, attributeId]) => [
-				key,
-				this.getAttributeValue(+attributeId),
-			])
+			Object.entries(template).map(([key, attributeId]) => [key, this.getAttributeValue(+attributeId)])
 		) as typeof SHIP_STATS_TEMPLATE;
 	}
 
