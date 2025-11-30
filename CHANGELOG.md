@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.1...v0.1.2) (2025-11-30)
+
+
+### Bug Fixes
+
+* **dogma:** add service container for common entities (factories, dat… ([850225f](https://github.com/Fit-My-Ship/dogma-engine/commit/850225f5409c6b3fcdc81afb600ef0bbe7b100c6))
+* **dogma:** add service container for common entities (factories, database) ([16b3253](https://github.com/Fit-My-Ship/dogma-engine/commit/16b3253944b9fa6682644287af1d050a6ff4ab89))
+
 ## [0.1.1](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.0...v0.1.1) (2025-11-28)
 
 
