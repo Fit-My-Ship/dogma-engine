@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.2...v0.1.3) (2025-11-30)
+
+
+### Bug Fixes
+
+* **config:** test release-please doubling ([4a60a0b](https://github.com/Fit-My-Ship/dogma-engine/commit/4a60a0bed8f0caced7fc97782926441d1a0f19bd))
+* **config:** test release-please doubling ([b40b547](https://github.com/Fit-My-Ship/dogma-engine/commit/b40b54739bf4b93beee281825fdf7000f3c2edf6))
+
 ## [0.1.2](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.1...v0.1.2) (2025-11-30)
 
 ### Bug Fixes
