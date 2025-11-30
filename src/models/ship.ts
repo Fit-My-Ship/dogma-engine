@@ -117,6 +117,10 @@ export class Ship {
 		this.pilot = new Pilot();
 	}
 
+	getTypeID(): number {
+		return this.hullTypeID;
+	}
+
 	getAttributeValue(attributeID: number): number {
 		return this.baseAttributes.find(e => e.attributeID === attributeID)?.value ?? 0;
 	}

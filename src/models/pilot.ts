@@ -1,17 +1,20 @@
-import { TypeAttribute } from '../types/attrib';
-import { TypeEffect } from '../types/effect';
-
-interface Skill {
-	typeID: number;
-	name: string;
-	attributes: TypeAttribute[];
-	effects: TypeEffect[];
-}
+import { ISkillData } from '../db/types';
 
 export class Pilot {
-	private skills: Skill[];
+	private skills: ISkillData[];
 
-	constructor() {
-		this.skills = [];
+	constructor(skills: ISkillData[] = []) {
+		this.skills = skills;
+	}
+
+	getSkills(): ISkillData[] {
+		return this.skills;
+	}
+
+	setAllSkillsLevel(newLevel: number): void {
+		this.skills = this.skills.map(skill => {
+			skill.level = newLevel;
+			return skill;
+		});
 	}
 }
