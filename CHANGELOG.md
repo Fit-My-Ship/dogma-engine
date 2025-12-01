@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.2.0...v0.2.1) (2025-12-01)
+
+
+### Bug Fixes
+
+* **dogma:** fix: pilot skills affect ship attributes ([e8efd67](https://github.com/Fit-My-Ship/dogma-engine/commit/e8efd67a72feadcdacf230e8bf0e2dc2264d1d8b))
+* **dogma:** fix: pilot skills affect ship attributes ([fdb3cf9](https://github.com/Fit-My-Ship/dogma-engine/commit/fdb3cf91f9d8dca39fddc674febc3d46cde2361c))
+
 ## [0.2.0](https://github.com/Fit-My-Ship/dogma-engine/compare/v0.1.2...v0.2.0) (2025-11-30)
 
 
