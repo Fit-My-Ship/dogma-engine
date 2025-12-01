@@ -14,15 +14,16 @@ describe('Pilot must have skills', async () => {
 
 	const pilotFactory = container.resolve<PilotFactory>('pilot-factory');
 	const pilot = await pilotFactory.create();
+
 	it('Pilot must be created', () => {
 		expect(pilot).toBeTruthy();
 	});
-	it('Pilot must have skills', () => {
-		expect(pilot.getSkills()).toBeTruthy();
-	});
+
 	it('Pilot must have non empty skills array', () => {
+		expect(pilot.getSkills()).toBeTruthy();
 		expect(pilot.getSkills().length).toBeGreaterThan(0);
 	});
+
 	it('Pilot must change skill levels', () => {
 		pilot.setAllSkillsLevel(5);
 		expect(pilot.getSkills().every(skill => skill.level === 5)).toBe(true);
