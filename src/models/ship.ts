@@ -108,7 +108,7 @@ export class Ship {
 
 	constructor(shipData: IShipData) {
 		this.hullTypeID = shipData.typeID;
-		this.hullAttributes = shipData.attributes;
+		this.hullAttributes = shipData.attributes.map(e => e);
 		this.baseAttributes = shipData.attributes.map(e => e);
 		this.hullEffects = shipData.effects;
 		this.modules = [];
@@ -120,7 +120,7 @@ export class Ship {
 	}
 
 	getAttributeValue(attributeID: number): number {
-		return this.baseAttributes.find(e => e.attributeID === attributeID)?.value ?? 0;
+		return this.hullAttributes.find(e => e.attributeID === attributeID)?.value ?? 0;
 	}
 
 	getSensorTypeAndStrength(): {
@@ -165,8 +165,6 @@ export class Ship {
 	}
 
 	async getShipStats(): Promise<ShipStats> {
-		// TODO: Calculate ship stats
-
 		const { sensorStrength, sensorType } = this.getSensorTypeAndStrength();
 
 		const statsFromTemplate = this.mapTemplateToValues(SHIP_STATS_TEMPLATE);
@@ -177,5 +175,19 @@ export class Ship {
 			sensorStrength,
 		};
 		return result;
+	}
+
+	recalculateStats(): void {
+		const skills = this.pilot.getSkills();
+		const skillLevel: number = skills?.[0]?.level ?? 0;
+		this.hullAttributes = this.hullAttributes.map(e => ({
+			...e,
+			value: e.value * (1 + (e.highIsGood ? skillLevel : -skillLevel) * 0.05),
+		}));
+	}
+
+	setPilot(pilot: Pilot): void {
+		this.pilot = pilot;
+		this.recalculateStats();
 	}
 }

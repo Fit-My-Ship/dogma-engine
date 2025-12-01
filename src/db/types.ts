@@ -1,5 +1,6 @@
 export interface ITypeAttributeData {
 	attributeID: number;
+	highIsGood: boolean;
 	value: number;
 }
 
