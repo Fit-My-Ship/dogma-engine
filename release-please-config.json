@@ -1,14 +1,14 @@
 {
 	"include-component-in-tag": false,
+	"include-v-in-tag": true,
 	"bump-minor-pre-major": true,
 	"bump-patch-for-minor-pre-major": true,
-	"branches": ["main"],
 	"separate-pull-requests": true,
 	"always-link-local": true,
-	"filter-commits": "exclude-merge-commits",
 	"packages": {
 		".": {
 			"release-type": "node"
 		}
-	}
+	},
+	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
